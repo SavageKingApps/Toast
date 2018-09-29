@@ -1,6 +1,8 @@
 package com.savageking.toast;
 
+import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,14 +16,17 @@ public class ToastFragment extends Fragment {
 
     private final static String TAG = "ToastFragment";
 
-    private View.OnClickListener buttonClick;
+    private View.OnClickListener buttonToastClick;
+    private View.OnClickListener buttonSnackClick;
     private View.OnClickListener toolBarClick;
+
+    private Snackbar snackbar;
+    private View.OnClickListener snackbarActionClick;
 
     public static ToastFragment getInstance()
     {
         return new ToastFragment();
     }
-
     public static String getInstanceTag()
     {
         return TAG;
@@ -31,12 +36,31 @@ public class ToastFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        buttonClick = new View.OnClickListener() {
+        buttonToastClick = new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 //shows the toast!
                 Toast.makeText( v.getContext(), R.string.toast_text, Toast.LENGTH_LONG ).show();
+            }
+        };
+
+        buttonSnackClick = new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(!snackbar.isShown())
+                    snackbar.show();
+            }
+        };
+
+        snackbarActionClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                if(snackbar.isShown())
+                    snackbar.dismiss();
             }
         };
 
@@ -62,9 +86,21 @@ public class ToastFragment extends Fragment {
         toolBar.setNavigationOnClickListener( toolBarClick );
 
         //get the button
-        final Button button = view.findViewById(R.id.button);
-        button.setOnClickListener( buttonClick);
+        final Button buttonToast = view.findViewById(R.id.button_toast);
+        buttonToast.setOnClickListener( buttonToastClick);
+
+        final Button buttonSnack = view.findViewById(R.id.button_snackbar);
+        buttonSnack.setOnClickListener( buttonSnackClick);
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        snackbar = Snackbar.make( getView(), R.string.snackbar_text, Snackbar.LENGTH_INDEFINITE );
+        snackbar.setAction( R.string.snackbar_action, snackbarActionClick );
+        snackbar.setActionTextColor(Color.RED);
     }
 }

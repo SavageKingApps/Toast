@@ -13,26 +13,32 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="10dp"
-        android:contentDescription="@string/logo_icon"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:src="@drawable/logo_small"/>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/button_toast"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/image"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="5dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_selector"
         android:padding="10dp"
-        android:text="@string/button_text"
+        android:text="@string/button_toast_text"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:id="@+id/button_snackbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_toast"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_selector"
+        android:padding="10dp"
+        android:text="@string/button_snackbar_text"
         android:textColor="@color/white"
         />
 

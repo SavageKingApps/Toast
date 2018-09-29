@@ -2,10 +2,13 @@
     <string name="app_name">Toast</string>
 
     <!-- app strings -->
-    <string name = "toolbar_title">Sample Code - Toast</string>
+    <string name = "toolbar_title">Sample Code</string>
     <string name = "toolbar_subtitle">By Monroe Shed</string>
-    <string name = "button_text">Show Toast</string>
-    <string name = "toast_text">Toast</string>
-    <string name = "logo_icon">SavageKing Mobile</string>
+    <string name = "button_toast_text">Show Toast</string>
+    <string name = "button_snackbar_text">Show Snackbar</string>
+    <string name = "toast_text">This is a Toast on the Android OS.</string>
+    <string name = "snackbar_text">This is a Snackbar on the Android OS.</string>
+    <string name = "snackbar_action">OK</string>
+
 
 </resources>
